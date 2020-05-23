@@ -18,7 +18,7 @@ var cellUpdate = (cells, days)  => {
     let result = [];
     
     // update states
-    for(let i = 0; i < cells.length; i++) { result.push((!!cells[i-1] === !!cells[i+1]) ? 0 : 1) }
+    for(let i = 0; i < cells.length; i++)  result.push((!cells[i-1] === !cells[i+1]) ? 0 : 1) ;
     
     // repeat for each day
     if (days > 1) result = cellUpdate(result, days - 1);
