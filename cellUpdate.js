@@ -10,15 +10,13 @@
         output should be [0, 0, 0, 0, 0, 1, 1, 0]
  */
  
-var cellUpdate = (cells, days)  => {
+var cellUpdatees = (cells, days)  => {
     
     let result = [];
     
     // update states
-    for(let i = 0; i < cells.length; i++)  result.push((!Boolean(cells[i-1]) === !Boolean(cells[i+1])) ? 0 : 1) ;
+    cells.forEach( (item, key) => { result.push((!Boolean(cells[key-1]) === !Boolean(cells[key+1])) ? 0 : 1) });
     
     // repeat for each day
-    if (days > 1) result = cellUpdate(result, days - 1);
-    return result;
-    
+    return (days > 1) ? cellUpdate(result, days - 1) : result;   
 }
